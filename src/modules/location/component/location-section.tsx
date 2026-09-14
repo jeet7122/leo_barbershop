@@ -1,31 +1,58 @@
 "use client";
 
-import { ArrowUpRight, Clock, MapPin, Navigation } from "lucide-react";
+import {
+    ArrowUpRight,
+    Clock,
+    MapPin,
+    Navigation,
+} from "lucide-react";
 import { motion } from "motion/react";
+
 import { siteConfig } from "@/src/config/site";
 import { locationData } from "../data/location";
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export function LocationSection() {
+    const { address, hours } = locationData;
+
+    /**
+     * Build the human-readable address once.
+     */
     const fullAddress = [
-        locationData.address.street,
-        locationData.address.city,
-        locationData.address.province,
-        locationData.address.postalCode,
+        address.street,
+        address.city,
+        address.province,
+        address.postalCode,
     ]
         .filter(Boolean)
         .join(", ");
 
-    const mapsUrl = fullAddress
-        ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-            `Leo's Barbershop ${fullAddress}`,
+    /**
+     * Google Maps destination.
+     *
+     * Using /dir/?api=1 with a destination avoids sending the
+     * visitor to a generic Google Maps search results page.
+     */
+    const googleMapsUrl = fullAddress
+        ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+            `Leo's Barbershop, ${fullAddress}`
         )}`
         : "#";
 
+    /**
+     * Embedded map.
+     *
+     * The iframe is intentionally kept address-based because
+     * the embed does not need to send the user through search.
+     */
     const mapEmbedUrl = fullAddress
         ? `https://www.google.com/maps?q=${encodeURIComponent(
-            `Leo's Barbershop, ${fullAddress}`,
+            `Leo's Barbershop, ${fullAddress}`
         )}&output=embed`
         : "";
+
+    const hasLocation = Boolean(fullAddress);
 
     return (
         <section
@@ -33,15 +60,21 @@ export function LocationSection() {
             className="overflow-hidden bg-ink px-[clamp(1.25rem,4vw,4rem)] py-28 md:py-36 lg:py-44"
         >
             <div className="mx-auto max-w-[1440px]">
-                {/* Section Header */}
+
+                {/* ─────────────────────────────────────────────
+                    SECTION HEADER
+                ───────────────────────────────────────────── */}
+
                 <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
+
+                    {/* Eyebrow */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{
                             duration: 0.7,
-                            ease: [0.22, 1, 0.36, 1],
+                            ease: EASE,
                         }}
                         className="flex items-start gap-4"
                     >
@@ -52,13 +85,14 @@ export function LocationSection() {
                         </span>
                     </motion.div>
 
+                    {/* Heading */}
                     <motion.div
                         initial={{ opacity: 0, y: 25 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{
                             duration: 0.8,
-                            ease: [0.22, 1, 0.36, 1],
+                            ease: EASE,
                         }}
                     >
                         <h2 className="max-w-4xl font-display-family text-[clamp(3rem,6vw,6rem)] leading-[1.11] tracking-[-0.04em] text-ivory">
@@ -75,22 +109,29 @@ export function LocationSection() {
                     </motion.div>
                 </div>
 
-                {/* Location Content */}
+                {/* ─────────────────────────────────────────────
+                    LOCATION CONTENT
+                ───────────────────────────────────────────── */}
+
                 <div className="mt-20 grid gap-4 md:mt-28 lg:grid-cols-[1.15fr_0.85fr]">
-                    {/* Google Maps */}
+
+                    {/* ─────────────────────────────────────────
+                        MAP
+                    ───────────────────────────────────────── */}
+
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{
                             duration: 0.9,
-                            ease: [0.22, 1, 0.36, 1],
+                            ease: EASE,
                         }}
                         className="group relative min-h-[420px] overflow-hidden bg-charcoal md:min-h-[560px]"
                     >
                         {mapEmbedUrl ? (
                             <iframe
-                                title="Leo's Barber Shop location"
+                                title="Leo's Barbershop location"
                                 src={mapEmbedUrl}
                                 className="absolute inset-0 h-full w-full border-0 grayscale-[0.8] contrast-[1.05] transition-all duration-700 group-hover:grayscale-[0.35]"
                                 loading="lazy"
@@ -112,7 +153,7 @@ export function LocationSection() {
                             </div>
                         )}
 
-                        {/* Subtle overlay */}
+                        {/* Map Overlay */}
                         <div className="pointer-events-none absolute inset-0 bg-black/10" />
 
                         {/* Map Label */}
@@ -125,17 +166,18 @@ export function LocationSection() {
                                 />
 
                                 <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-ivory">
-                                    Leo&apos;s Barber Shop
+                                    Leo&apos;s Barbershop
                                 </span>
                             </div>
                         </div>
 
-                        {/* Open Google Maps */}
-                        {fullAddress && (
+                        {/* Open in Google Maps */}
+                        {hasLocation && (
                             <a
-                                href={mapsUrl}
+                                href={googleMapsUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                aria-label="Get directions to Leo's Barbershop"
                                 className="group/directions absolute bottom-5 left-5 inline-flex items-center gap-3 border border-white/20 bg-black/75 px-4 py-3 backdrop-blur-md transition-all duration-300 hover:border-gold hover:bg-gold md:bottom-7 md:left-7"
                             >
                                 <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-ivory transition-colors duration-300 group-hover/directions:text-ink">
@@ -151,7 +193,10 @@ export function LocationSection() {
                         )}
                     </motion.div>
 
-                    {/* Information Panel */}
+                    {/* ─────────────────────────────────────────
+                        INFORMATION PANEL
+                    ───────────────────────────────────────── */}
+
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -159,10 +204,11 @@ export function LocationSection() {
                         transition={{
                             duration: 0.9,
                             delay: 0.1,
-                            ease: [0.22, 1, 0.36, 1],
+                            ease: EASE,
                         }}
                         className="flex flex-col bg-charcoal p-7 md:p-10 lg:p-12"
                     >
+
                         {/* Address */}
                         <div>
                             <div className="flex items-center gap-3">
@@ -178,30 +224,32 @@ export function LocationSection() {
                             </div>
 
                             <div className="mt-5 text-sm leading-7 text-ivory/65">
-                                {locationData.address.street ? (
+                                {address.street ? (
                                     <>
-                                        <p>{locationData.address.street}</p>
+                                        <p>{address.street}</p>
 
                                         <p>
-                                            {locationData.address.city},{" "}
-                                            {locationData.address.province}{" "}
-                                            {locationData.address.postalCode}
+                                            {address.city},{" "}
+                                            {address.province}{" "}
+                                            {address.postalCode}
                                         </p>
                                     </>
                                 ) : (
                                     <p>
-                                        {locationData.address.city},{" "}
-                                        {locationData.address.province},{" "}
-                                        {locationData.address.country}
+                                        {address.city},{" "}
+                                        {address.province},{" "}
+                                        {address.country}
                                     </p>
                                 )}
                             </div>
 
-                            {fullAddress && (
+                            {/* Directions */}
+                            {hasLocation && (
                                 <a
-                                    href={mapsUrl}
+                                    href={googleMapsUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label="Get directions to Leo's Barbershop"
                                     className="group mt-6 inline-flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-bright"
                                 >
                                     <span>Get Directions</span>
@@ -233,17 +281,17 @@ export function LocationSection() {
                             </div>
 
                             <div className="mt-5 space-y-3">
-                                {locationData.hours.map((item) => (
+                                {hours.map(({ day, hours: openingHours }) => (
                                     <div
-                                        key={item.day}
+                                        key={day}
                                         className="flex items-center justify-between gap-6 text-xs"
                                     >
                                         <span className="text-ivory/50">
-                                            {item.day}
+                                            {day}
                                         </span>
 
                                         <span className="text-right text-ivory/70">
-                                            {item.hours || "—"}
+                                            {openingHours || "—"}
                                         </span>
                                     </div>
                                 ))}
@@ -254,6 +302,7 @@ export function LocationSection() {
                         <div className="mt-auto pt-10">
                             <a
                                 href={`tel:${siteConfig.contact.phone}`}
+                                aria-label={`Call ${siteConfig.shortName}`}
                                 className="group flex w-full items-center justify-between border border-gold/40 px-5 py-4 transition-all duration-300 hover:border-gold hover:bg-gold"
                             >
                                 <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ivory transition-colors duration-300 group-hover:text-ink">

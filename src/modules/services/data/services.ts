@@ -2,36 +2,97 @@ export type Service = {
     name: string;
     description: string;
     price: string;
-    duration?: string;
+    duration?: string
+    image: string;
 };
 
 export const services: Service[] = [
     {
         name: "Haircut",
         description:
-            "A personalized cut tailored to your style, face shape, and preferred finish.",
+            "A clean, personalized haircut tailored to your style and finished with precision.",
         price: "CAD $20",
+        duration: "20-25 minutes",
+        image: "/images/services/haircut.jpg",
+    },
+    {
+        name: "Haircut Zero Fade",
+        description:
+            "A sharp zero fade with a clean blend and detailed finish for a crisp, modern look.",
+        price: "CAD $25",
         duration: "25-30 minutes",
+        image: "/images/services/fade_haircut.jpg",
     },
     {
-        name: "Haircut & Beard",
+        name: "Hair Colour",
         description:
-            "A complete grooming service combining a tailored haircut with a refined beard finish.",
-        price: "CAD $35",
-        duration: "35-40 minutes",
+            "Full hair colour service designed to refresh your look with an even, polished finish.",
+        price: "CAD $30",
+        duration: "15-20 minutes",
+        image: "/images/services/hair_color.jpg",
     },
     {
-        name: "Beard Trim",
+        name: "Beard Trim & Line Up",
         description:
-            "Precision shaping and detailing to keep your beard clean, balanced, and defined.",
-        price: "CAD $15",
+            "Precision beard shaping and line-up work for a clean, balanced, and defined finish.",
+        price: "CAD $20",
         duration: "10-15 minutes",
+        image: "/images/services/beard_trim.jpg",
+    },
+    {
+        name: "Beard Colour",
+        description:
+            "Natural-looking beard colour to refresh your appearance and complement your style.",
+        price: "CAD $15",
+        duration: "15-20 minutes",
+        image: "/images/services/beard_color.jpg",
+    },
+    {
+        name: "Wax",
+        description:
+            "Quick and precise waxing for a clean, well-groomed finish.",
+        price: "CAD $10",
+        duration: "15-20 minutes",
+        image: "/images/services/facial_wax.jpg",
+    },
+    {
+        name: "Threading",
+        description:
+            "Detailed eyebrow threading for clean shaping and a well-defined appearance.",
+        price: "CAD $10",
+        duration: "10-15 minutes",
+        image: "/images/services/threading.jpg",
+    },
+    {
+        name: "Full Service",
+        description:
+            "A complete grooming experience combining haircut, beard, and facial care.",
+        price: "CAD $50",
+        duration: "35-40 minutes",
+        image: "/images/services/full_service.jpg",
+    },
+    {
+        name: "Facial",
+        description:
+            "A deep cleansing facial designed to refresh, cleanse, and care for your skin.",
+        price: "CAD $15",
+        duration: "15-20 minutes",
+        image: "/images/services/facial.jpg",
+    },
+    {
+        name: "Shampoo",
+        description:
+            "A refreshing hair wash to cleanse and leave your hair feeling fresh and renewed.",
+        price: "CAD $5",
+        duration: "5-10 minutes",
+        image: "/images/services/shampoo.jpg",
     },
     {
         name: "Kids Haircut",
         description:
             "A clean, comfortable haircut with attention to detail for younger clients.",
         price: "CAD $15",
-        duration: "20-25 minutes",
+        duration: "15-20 minutes",
+        image: "/images/services/kids_haircut.jpg",
     },
 ];

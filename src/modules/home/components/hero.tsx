@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowDown, ArrowUpRight, MapPin, Phone } from "lucide-react";
+import { ArrowDown, ArrowUpRight, MapPin, CalendarIcon } from "lucide-react";
 import { motion } from "motion/react";
 
 import { siteConfig } from "@/src/config/site";
@@ -107,15 +107,15 @@ export function Hero() {
                         className="mt-9 flex flex-col gap-3 sm:flex-row"
                     >
                         <a
-                            href={`tel:${siteConfig.contact.phone}`}
+                            href="https://leosbarbershopwindsor.setmore.com/book"
                             className="group inline-flex w-fit items-center gap-4 bg-gold px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink transition-all duration-300 hover:bg-gold-bright"
                         >
-                            <Phone
+                            <CalendarIcon
                                 size={15}
                                 strokeWidth={1.5}
                             />
 
-                            <span>Call Now</span>
+                            <span>Book Now</span>
 
                             <ArrowUpRight
                                 size={15}
@@ -125,10 +125,10 @@ export function Hero() {
                         </a>
 
                         <a
-                            href="#gallery"
+                            href="#services"
                             className="group inline-flex w-fit items-center gap-3 border border-white/25 px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-ivory transition-all duration-300 hover:border-white/50 hover:bg-white/10"
                         >
-                            <span>Explore Our Work</span>
+                            <span>Explore Our Services</span>
 
                             <ArrowDown
                                 size={15}

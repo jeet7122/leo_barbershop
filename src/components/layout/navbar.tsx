@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, Phone, X, CalendarIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/src/config/site";
 import Image from "next/image";
@@ -87,10 +87,10 @@ export function Navbar() {
 
                 {/* Desktop CTA */}
                 <a
-                    href={`tel:${siteConfig.contact.phone}`}
+                    href="https://leosbarbershopwindsor.setmore.com/book"
                     className="group hidden items-center gap-3 border border-gold/50 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-ivory transition-all duration-300 hover:border-gold hover:bg-gold hover:text-ink md:flex"
                 >
-                    <Phone
+                    <CalendarIcon
                         size={14}
                         strokeWidth={1.5}
                         className="transition-transform duration-300 group-hover:rotate-[-8deg]"
@@ -145,12 +145,12 @@ export function Navbar() {
                 </nav>
 
                 <a
-                    href={`tel:${siteConfig.contact.phone}`}
+                    href="https://leosbarbershopwindsor.setmore.com/book"
                     onClick={closeMenu}
                     className="mt-10 flex w-fit items-center gap-3 border border-gold bg-gold px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink"
                 >
-                    <Phone size={15} strokeWidth={1.5} />
-                    Call {siteConfig.name}
+                    <CalendarIcon size={15} strokeWidth={1.5} />
+                    Book Now
                 </a>
             </div>
         </header>

@@ -110,6 +110,10 @@ export function Footer() {
                         © {new Date().getFullYear()} {siteConfig.name}
                     </p>
 
+                    <a href="https://jeet7122.github.io" rel="noopener noreferrer" target="_blank">
+                        Designed and Developed by Jeet Thakkar
+                    </a>
+
                     <p>
                         Windsor · Ontario
                     </p>
