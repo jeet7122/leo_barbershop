@@ -19,16 +19,15 @@ export const reviews: Review[] = [
         date: new Date(2025, 7, 13),
     },
     {
-        name: "Dan Kinny",
+        name: "Rutvik Gajjar",
         rating: 5,
-        text: "Appointment booked online and apparently there was a mistake and they were not supposed to be open. I arrived with my son and there was a man at the location but was not who i had booked with he was just there picking up a package and was not supposed to work that day. However being the gentleman he is, he took care of my son’s haircut. Did an amazing job too!! Thank you Leo for taking time out of your day off to go above and beyond!",
+        text: "Leo has always been the best barber in the town. More than a barber he is a friend to his every customer. I will highly recommend everyone to visit this place!",
         date: new Date(2025, 7, 11),
     },
     {
-        name: "Ashley B",
+        name: "D Bal",
         rating: 5,
-        text: "Have been bringing my now 6 year old to Urban Barber for at least a year now. We had tried several different barbers before that and either had trouble finding a barber who was comfortable cutting kids' hair or if they did they didn't do a great job or were so busy that it would be hard to get an appointment.\n" +
-            "Our very first time at Urban Barber I was able to easily schedule an appointment online (and usually the same day or next day at the latest), we're able to see the same Barber every single time Leo who does a fantastic job, is incredibly patient with kids not sitting still well and gets his very thick hair cut within about 15mins) plus the Barber shop is clean, spacious and not super busy or overwhelming. We won't go anywhere else now!\n",
+        text: "New ownership by Leo. A great young Barber with an outstanding work ethic. Gives great haircuts and super polite and friendly.",
         date: new Date(2025, 8, 6),
     },
 ]

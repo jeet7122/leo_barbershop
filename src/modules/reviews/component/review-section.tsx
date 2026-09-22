@@ -151,7 +151,7 @@ export function ReviewsSection() {
                                         </p>
 
                                         <p className="mt-1 text-[9px] uppercase tracking-[0.16em] text-ivory/30">
-                                            {review.date.toTimeString()}
+                                            {String(review.date.getDay())}/{String(review.date.getMonth())}/{String(review.date.getFullYear())}
                                         </p>
                                     </div>
 
