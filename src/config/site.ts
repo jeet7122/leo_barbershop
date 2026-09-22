@@ -13,7 +13,7 @@ export const siteConfig = {
     },
 
     contact: {
-        phone: "",
+        phone: "5199454444",
         email: "",
     },
 
