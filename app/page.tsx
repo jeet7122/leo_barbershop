@@ -6,12 +6,13 @@ import {GallerySection} from "@/src/modules/gallery";
 import {LocationSection} from "@/src/modules/location";
 import {FinalCTA} from "@/src/modules/contact";
 import {Footer} from "@/src/components/layout/footer";
-import {IntroVideo} from "@/src/components/intro/IntroVideo";
+// import {IntroVideo} from "@/src/components/intro/IntroVideo";
+import {ReviewsSection} from "@/src/modules/reviews";
 
 export default function Home() {
     return (
         <>
-            <IntroVideo/>
+            {/*<IntroVideo/>*/}
             <Navbar />
 
 
@@ -21,6 +22,7 @@ export default function Home() {
                 <AboutSection/>
                 <ServicesSection/>
                 <GallerySection/>
+                <ReviewsSection/>
                 <LocationSection/>
                 <FinalCTA/>
             </main>

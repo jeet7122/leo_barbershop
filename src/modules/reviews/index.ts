@@ -1,0 +1,1 @@
+export {ReviewsSection} from "./component/review-section"

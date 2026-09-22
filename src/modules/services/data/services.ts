@@ -4,6 +4,7 @@ export type Service = {
     price: string;
     duration?: string
     image: string;
+    bookLink?: string;
 };
 
 export const services: Service[] = [
@@ -14,6 +15,7 @@ export const services: Service[] = [
         price: "CAD $20",
         duration: "20-25 minutes",
         image: "/images/services/haircut.jpg",
+        bookLink: "https://leosbarbershopwindsor.setmore.com/book?step=time-slot&products=3f5b76ec-7067-44be-9074-f2d24826b947&type=service&staff=71a89899-07c8-438b-804e-e0ee8f1d612b&staffSelected=true"
     },
     {
         name: "Haircut Zero Fade",
@@ -22,6 +24,7 @@ export const services: Service[] = [
         price: "CAD $25",
         duration: "25-30 minutes",
         image: "/images/services/fade_haircut.jpg",
+        bookLink: "https://leosbarbershopwindsor.setmore.com/book?step=time-slot&products=7df47e73-42ec-450d-a2ae-42dd1ff977ab&type=service&staff=71a89899-07c8-438b-804e-e0ee8f1d612b&staffSelected=true",
     },
     {
         name: "Hair Colour",
@@ -38,6 +41,7 @@ export const services: Service[] = [
         price: "CAD $20",
         duration: "10-15 minutes",
         image: "/images/services/beard_trim.jpg",
+        bookLink: "https://leosbarbershopwindsor.setmore.com/book?step=time-slot&products=42852cc7-9e9b-4726-bbab-34d20cea41b7&type=service&staff=71a89899-07c8-438b-804e-e0ee8f1d612b&staffSelected=true"
     },
     {
         name: "Beard Colour",
@@ -70,6 +74,7 @@ export const services: Service[] = [
         price: "CAD $50",
         duration: "35-40 minutes",
         image: "/images/services/full_service.jpg",
+        bookLink: "https://leosbarbershopwindsor.setmore.com/book?step=time-slot&products=14497251-cfb8-48e9-89b2-f60a7be89d18&type=service&staff=71a89899-07c8-438b-804e-e0ee8f1d612b&staffSelected=true"
     },
     {
         name: "Facial",
@@ -94,5 +99,6 @@ export const services: Service[] = [
         price: "CAD $15",
         duration: "15-20 minutes",
         image: "/images/services/kids_haircut.jpg",
+        bookLink: "https://leosbarbershopwindsor.setmore.com/book?step=time-slot&products=f0f1204b-445b-4066-8015-db4fddc4e6db&type=service&staff=71a89899-07c8-438b-804e-e0ee8f1d612b&staffSelected=true"
     },
 ];

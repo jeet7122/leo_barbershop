@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, Phone, X, CalendarIcon } from "lucide-react";
+import { Menu, X, CalendarIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/src/config/site";
 import Image from "next/image";
@@ -9,6 +9,7 @@ const navigation = [
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
     { label: "Work", href: "#gallery" },
+    {label: "Reviews", href: "#reviews" },
     { label: "Location", href: "#location" },
 ];
 
@@ -53,7 +54,7 @@ export function Navbar() {
             <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-[clamp(1.25rem,4vw,4rem)]">
                 {/* Brand */}
                 <a
-                    href="#home"
+                    href="/"
                     aria-label={`${siteConfig.name} home`}
                     className="group relative z-10 flex items-center"
                 >
@@ -96,7 +97,7 @@ export function Navbar() {
                         className="transition-transform duration-300 group-hover:rotate-[-8deg]"
                     />
 
-                    <span>Call Now</span>
+                    <span>Book Now</span>
                 </a>
 
                 {/* Mobile Menu Button */}

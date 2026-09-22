@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Phone } from "lucide-react";
+import { ArrowUpRight, CalendarIcon } from "lucide-react";
 import { motion } from "motion/react";
 import { siteConfig } from "@/src/config/site";
 
@@ -76,15 +76,15 @@ export function FinalCTA() {
                             className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center"
                         >
                             <a
-                                href={`tel:${siteConfig.contact.phone}`}
+                                href='https://leosbarbershopwindsor.setmore.com/book'
                                 className="group inline-flex w-fit items-center gap-4 bg-gold px-7 py-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink transition-colors duration-300 hover:bg-gold-bright"
                             >
-                                <Phone
+                                <CalendarIcon
                                     size={15}
                                     strokeWidth={1.5}
                                 />
 
-                                <span>Call Now</span>
+                                <span>Book Now</span>
 
                                 <ArrowUpRight
                                     size={15}

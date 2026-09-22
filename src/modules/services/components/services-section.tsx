@@ -9,6 +9,12 @@ import { services } from "../data/services";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function ServicesSection() {
+    const handleBooking = (bookLink?: string) => {
+        if (!bookLink) return;
+
+        window.open(bookLink, "_blank", "noopener,noreferrer");
+    };
+
     return (
         <section
             id="services"
@@ -16,13 +22,12 @@ export function ServicesSection() {
         >
             <div className="mx-auto max-w-[1440px]">
 
-                {/* ─────────────────────────────────────────────
-                    HEADER
-                ───────────────────────────────────────────── */}
+                {/* HEADER */}
 
                 <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
 
                     {/* Eyebrow */}
+
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -41,6 +46,7 @@ export function ServicesSection() {
                     </motion.div>
 
                     {/* Heading */}
+
                     <motion.div
                         initial={{ opacity: 0, y: 25 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -65,88 +71,120 @@ export function ServicesSection() {
                     </motion.div>
                 </div>
 
-                {/* ─────────────────────────────────────────────
-                    SERVICE LIST
-                ───────────────────────────────────────────── */}
+                {/* SERVICE LIST */}
 
                 <div className="mt-20 border-t border-white/10 md:mt-28">
-                    {services.map((service, index) => (
-                        <motion.div
-                            key={service.name}
-                            initial={{ opacity: 0, y: 25 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.15 }}
-                            transition={{
-                                duration: 0.7,
-                                delay: index * 0.06,
-                                ease: EASE,
-                            }}
-                            className="group border-b border-white/10"
-                        >
-                            <div className="grid gap-6 py-8 md:grid-cols-[60px_1fr_auto] md:items-center md:gap-8 md:py-10">
 
-                                {/* Number */}
-                                <span className="font-mono text-[10px] tracking-[0.2em] text-ivory/25">
-                                    {String(index + 1).padStart(2, "0")}
-                                </span>
+                    {services.map((service, index) => {
+                        const isBookable = Boolean(service.bookLink);
 
-                                {/* Service */}
-                                <div className="flex items-center gap-5">
+                        return (
+                            <motion.div
+                                key={service.name}
+                                initial={{ opacity: 0, y: 25 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{
+                                    once: true,
+                                    amount: 0.15,
+                                }}
+                                transition={{
+                                    duration: 0.7,
+                                    delay: index * 0.06,
+                                    ease: EASE,
+                                }}
+                                onClick={() =>
+                                    handleBooking(service.bookLink)
+                                }
+                                onKeyDown={(event) => {
+                                    if (
+                                        isBookable &&
+                                        (event.key === "Enter" ||
+                                            event.key === " ")
+                                    ) {
+                                        event.preventDefault();
+                                        handleBooking(service.bookLink);
+                                    }
+                                }}
+                                tabIndex={isBookable ? 0 : undefined}
+                                role={isBookable ? "button" : undefined}
+                                className={`group border-b border-white/10 ${
+                                    isBookable
+                                        ? "cursor-pointer"
+                                        : ""
+                                }`}
+                            >
+                                <div className="grid gap-6 py-8 md:grid-cols-[60px_1fr_auto] md:items-center md:gap-8 md:py-10">
 
-                                    {/* Image */}
-                                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-white/10 bg-charcoal md:h-[72px] md:w-[72px]">
-                                        <Image
-                                            src={service.image}
-                                            alt={service.name}
-                                            fill
-                                            sizes="72px"
-                                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                                        />
+                                    {/* Number */}
 
-                                        {/* Subtle image overlay */}
-                                        <div className="pointer-events-none absolute inset-0 bg-black/10 transition-opacity duration-300 group-hover:bg-transparent" />
-                                    </div>
-
-                                    {/* Text */}
-                                    <div className="min-w-0">
-                                        <div className="flex items-center gap-3">
-                                            <h3 className="font-display-family text-3xl tracking-[-0.02em] text-ivory transition-colors duration-300 group-hover:text-gold-bright md:text-4xl lg:text-5xl">
-                                                {service.name}
-                                            </h3>
-
-                                            <ArrowUpRight
-                                                size={17}
-                                                strokeWidth={1.4}
-                                                className="shrink-0 text-gold opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
-                                            />
-                                        </div>
-
-                                        <p className="mt-2 max-w-xl text-xs leading-6 text-ivory/40 md:mt-3 md:text-sm">
-                                            {service.description}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {/* Price / Duration */}
-                                <div className="flex items-center gap-5 pl-[84px] md:flex-col md:items-end md:gap-1 md:pl-0">
-                                    <span className="font-display-family text-2xl text-ivory md:text-3xl">
-                                        {service.price}
+                                    <span className="font-mono text-[10px] tracking-[0.2em] text-ivory/25">
+                                        {String(index + 1).padStart(2, "0")}
                                     </span>
 
-                                    {service.duration && (
-                                        <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-ivory/30">
-                                            {service.duration}
+                                    {/* Service */}
+
+                                    <div className="flex items-center gap-5">
+
+                                        {/* Image */}
+
+                                        <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-white/10 bg-charcoal md:h-[72px] md:w-[72px]">
+                                            <Image
+                                                src={service.image}
+                                                alt={service.name}
+                                                fill
+                                                sizes="72px"
+                                                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                                            />
+
+                                            <div className="pointer-events-none absolute inset-0 bg-black/10 transition-opacity duration-300 group-hover:bg-transparent" />
+                                        </div>
+
+                                        {/* Text */}
+
+                                        <div className="min-w-0">
+                                            <div className="flex items-center gap-3">
+
+                                                <h3 className="font-display-family text-3xl tracking-[-0.02em] text-ivory transition-colors duration-300 group-hover:text-gold-bright md:text-4xl lg:text-5xl">
+                                                    {service.name}
+                                                </h3>
+
+                                                <ArrowUpRight
+                                                    size={17}
+                                                    strokeWidth={1.4}
+                                                    className={`shrink-0 text-gold transition-all duration-300 ${
+                                                        isBookable
+                                                            ? "opacity-0 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
+                                                            : "opacity-0"
+                                                    }`}
+                                                />
+                                            </div>
+
+                                            <p className="mt-2 max-w-xl text-xs leading-6 text-ivory/40 md:mt-3 md:text-sm">
+                                                {service.description}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* Price / Duration */}
+
+                                    <div className="flex items-center gap-5 pl-[84px] md:flex-col md:items-end md:gap-1 md:pl-0">
+                                        <span className="font-display-family text-2xl text-ivory md:text-3xl">
+                                            {service.price}
                                         </span>
-                                    )}
+
+                                        {service.duration && (
+                                            <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-ivory/30">
+                                                {service.duration}
+                                            </span>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
-                {/* ─────────────────────────────────────────────
-                    BOTTOM NOTE
-                ───────────────────────────────────────────── */}
+                {/* BOTTOM NOTE */}
 
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -157,7 +195,7 @@ export function ServicesSection() {
                 >
                     <p className="max-w-md text-[10px] leading-5 text-ivory/25">
                         Services and pricing may be updated periodically.
-                        Please contact Leo&apos;s Barber Shop for current
+                        Please contact Leo&apos;s Barbershop for current
                         availability.
                     </p>
 
