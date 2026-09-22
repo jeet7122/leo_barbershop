@@ -14,6 +14,6 @@ export const locationData = {
         { day: "Thursday", hours: "10:00 AM to 8:00 PM" },
         { day: "Friday", hours: "10:00 AM to 8:00 PM" },
         { day: "Saturday", hours: "10:00 AM to 8:00 PM" },
-        { day: "Sunday", hours: "10:00 AM to 8:00 PM" },
+        { day: "Sunday", hours: "10:00 AM to 7:00 PM" },
     ],
 } as const;
