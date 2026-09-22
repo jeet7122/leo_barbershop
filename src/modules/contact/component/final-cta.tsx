@@ -93,9 +93,6 @@ export function FinalCTA() {
                                 />
                             </a>
 
-                            <span className="text-xs tracking-[0.08em] text-ivory/35">
-                                {siteConfig.contact.phone}
-                            </span>
                         </motion.div>
                     </div>
                 </div>

@@ -13,12 +13,12 @@ export const siteConfig = {
     },
 
     contact: {
-        phone: "5199454444",
+        phone: "+1 (519) 945-4444",
         email: "",
     },
 
     social: {
-        instagram: "",
+        instagram: "https://www.instagram.com/leosbarbershop.ca",
         facebook: "",
     },
 
